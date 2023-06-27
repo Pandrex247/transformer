@@ -49,7 +49,7 @@
 
     <groupId>fish.payara.deployment.transformer</groupId>
     <artifactId>deployment-transformer-parent</artifactId>
-    <version>1.2</version>
+    <version>1.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -61,12 +61,12 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <payara.version>6.2023.2</payara.version>
+        <payara.core.version>6.8.0-SNAPSHOT</payara.core.version>
 		<maven-bundle-plugin.version>4.1.0</maven-bundle-plugin.version>
 
         <fish.payara.transformer.payara.version>0.2.11</fish.payara.transformer.payara.version>
-        <deployment.transformer.api.version>1.2</deployment.transformer.api.version>
-        <deployment.transformer.impl.version>1.2</deployment.transformer.impl.version>
+        <deployment.transformer.api.version>1.3-SNAPSHOT</deployment.transformer.api.version>
+        <deployment.transformer.impl.version>1.3-SNAPSHOT</deployment.transformer.impl.version>
     </properties>
 
     <distributionManagement>
@@ -122,12 +122,13 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>fish.payara.server.core.common</groupId>
-                <artifactId>internal-api</artifactId>
-                <version>${payara.version}</version>
-                <scope>provided</scope>
-            </dependency>
+			<dependency>
+				<groupId>fish.payara.server.core</groupId>
+				<artifactId>core-bom</artifactId>
+				<version>${payara.core.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
             <dependency>
                 <groupId>fish.payara.transformer</groupId>
                 <artifactId>fish.payara.transformer.payara</artifactId>
